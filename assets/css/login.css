@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* background-color: midnightblue; */
+  font-family: "Roboto", sans-serif;
+  background-image: url("https://webimages.mongodb.com/_com_assets/cms/kuztefjfmcr54smwt-Meta_Blogs.png");
+  background-size: cover;
+}
+
+.logincontainer {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  flex-direction: column; /* Optionally, for vertical centering of child elements */
+  text-align: center;
+}
+
+.logincontainer h1 {
+  color: black;
+}
+.buttons {
+  margin-top: 35px;
+  display: flex;
+  gap: 10px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.inputs input {
+  width: 75%;
+  margin: 0 auto;
+  height: 30px;
+}
+
+.inputs label {
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 0.3px black;
+}
+
+.buttons {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 25px;
+  gap: 2em;
+}
+
+.error-message {
+  border: 1px solid red;
+  width: 75%;
+  /* display: none; */
+  margin: auto;
+  border-radius: 5px;
+  color: red;
+  background-color: azure;
+}

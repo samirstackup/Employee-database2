@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,500;1,200&family=Roboto:wght@300;500;900&display=swap"
+      rel="stylesheet"
+    />
+    {{!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/PI1uIufwHjIiNJ-n/scene.splinecode"></spline-viewer> --}}
+  </head>
+  <body>
+    <div class="logincontainer">
+      <h1>Login</h1>
+      <form action="/login" method="POST" novalidate>
+        <div class="inputs">
+          <label for="email">Email</label>
+          <input type="email" name="email" required />
+         <div id="emailError" class="error-message" style="{{#if displayemailError}}display: block;{{else}}display: none;{{/if}}">Please enter a valid email address </div>
+           
+          <!-- Error message for email -->
+
+          <label for="password">Password</label>
+          <input type="password" name="password" required />
+         <div id="passError" class="error-message" style="{{#if displayPassError}}display: block;{{else}}display: none;{{/if}}">Password inccorect </div>
+
+          <!-- Error message for email -->
+
+        </div>
+        <div class="buttons">
+          <button>Submit</button>
+          <button>Cancel</button>
+        </div>
+      </form>
+
+      <a href="/register" class="href">Register</a>
+    </div>
+  </body>
+</html>

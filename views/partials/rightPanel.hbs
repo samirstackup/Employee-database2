@@ -1,0 +1,326 @@
+<!-- Right container with rest of deets -->
+
+            <div class="col" style="background-color: #F4F7FE; overflow: auto;">
+
+                <!--         Header,container 2      -->
+                <div class="row">
+                    <div class="col-3 p-4 "
+                        style="display: flex;flex-direction: column; flex:1;background-color: #F4F7FE;">
+                        <p style="color: #707EAE; font-weight: 500;padding: 0; margin: 0;">Dashboard/Employees</p>
+                        <h2 style="color:  #2B3674;padding: 0; font-weight: bold; letter-spacing: 1px;">Employees</h2>
+                    </div>
+                    <div class="col p-4" style="display: flex; justify-content: flex-end;">
+                        <div
+                            style="background-color: #fff; border-radius: 30px; padding: 5px 20px 5px 20px; width: 346px; display:flex ; align-items: center; gap: 20px; height: 61.5px; flex-shrink: 0;">
+                            <form class="nosubmit" id="searchForm">
+                                <input class="nosubmit" style="width: 214px;height: 41.34px;flex-shrink: 0;display: flex;
+                                align-items: center;" type="search" placeholder="Search..." id="searchInput" onkeyup="search()"> <!---->
+                            </form>
+                            <i class="fa-regular fa-bell" style="color: gray;width: 24px;height: 24.199px;
+                          flex-shrink: 0;"></i>
+                            <img src="/img/Avatar Style 6.png" alt=""
+                                style="display: flex;width: 41px;height: 41.34px;flex-direction: column;justify-content: center;align-items: center;flex-shrink: 0;">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--           Employee list starts         -->
+
+                <div class="container-fluid p-3"
+                    style="background-color: #fff; max-width:980px;border-radius: 10px; width:100%; overflow: auto;">
+
+                    <!--    Add button+dropdown  -->
+
+                    <div style="display: flex; gap:10px;text-align: center; align-items: center;">
+                        <h3 style="color: #2B3674; font-size: 24px; font-weight: 700; margin: 0;">Employee list</h3>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"
+                                style="background-color: #fff; color: black; width: 55px; border-color: silver;">
+                                1
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                                <li><a class="dropdown-item" href="#">3</a></li>
+                                <li><a class="dropdown-item" href="#">4</a></li>
+                                <li><a class="dropdown-item" href="#">5</a></li> <!--dropdown items-->
+                                <li><a class="dropdown-item" href="#">6</a></li>
+                                <li><a class="dropdown-item" href="#">7></a></li>
+                                <li><a class="dropdown-item" href="#">8</a></li>
+                                <li><a class="dropdown-item" href="#">9</a></li>
+                            </ul>
+                        </div>
+
+                        <!--         Modal button+ Modal    -->
+
+                        <p style="font-weight: 500;margin:auto 0; display: flex; flex: 1;">of 10</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
+                            style="background-color: #4318FF; font-weight: 500;padding: 10px; border-radius: 15px;">
+                            Add Employee
+                        </button>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog" style="max-width: 850px;">
+                                <div class="modal-content">
+                                    <form id="empform"  method="POST" action="/api/employees" enctype="multipart/form-data" novalidate>
+
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"
+                                                style="color: #2B3674;">
+                                                Add Employee</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <!--        Modal Form       -->
+
+                                            <!--2 cards in row-->
+
+                                            <!--First card        -->
+                                            <div class="card p-4"
+                                                style=" display: flex; flex-direction: column;text-align: left;">
+                                                <p class="h4 mb-3 "
+                                                    style="color: var(--primary-color); font-weight: 500; ">Basic
+                                                    details</p>
+
+                                                <!--Upload file box-->
+                                                <!-- <a href="#">  -->
+                                                    <div class="container-border py-3"
+                                                        style="border-radius: 13px; border: 2px dashed #B2BAD0; background: var(--secondary-grey-100, #FAFCFE); align-items: center; display: flex; flex-direction: column; width: 100%;" id="upCont">
+                                                        <label for="avatar" style="cursor: pointer; text-align: center;" accept=".png, .jpg, .jpeg">
+                                                            <span class="material-icons" style="color: rgb(70, 70, 238);">
+                                                                file_upload
+                                                            </span>
+                                                            <p class="h5" style="color: rgb(70, 70, 238); font-weight: 500;">
+                                                                Upload image
+                                                            </p>
+                                                            <p style="color: #8F9BBA;">PNG, JPG files are allowed</p>
+                                                        </label>
+                                                        <input name="avatar" type="file" id="avatar" style="display: none;" accept=".png, .jpg, .jpeg">
+                                                        <img id="selectedImage" src="" alt="Selected Image" style="max-width: 25%; display: none; margin: auto;">
+
+                                                    </div>
+                                                <!-- </a> -->
+                                                <div class="row mt-4 "> <!--Name row-->
+                                                    <div class="col-md-3">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >
+                                                            Salutation</p>
+                                                        <select class="form-select" id="mrms" name="salutation">
+                                                            <option value="">Select</option>
+                                                            <option value="Mr." id="mr" name="salutation">Mr</option>
+                                                            <option value="Mrs." id="mrs" name="salutation">Mrs</option>
+                                                            <option value="Ms" id="ms" name="salutation">Ms</option>
+                                                        </select>
+                                                        <p style="color: red; padding:5px; display:none;" id="salError">Field required</p>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            > First name</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm" placeholder="John"id="Fname" name="firstName">
+                                                        <p style="color: red; padding:5px; display:none;" id="fNameError">Field required</p>
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >Last name</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm" placeholder="doe"id="Lname" name="lastName">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="lNameError">Field required</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4 " > <!-- Username and password-->
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            > Username</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            placeholder="+91 3588899xx"id="username" name="username">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="usernameError">Field required</p>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                             type="email">Password</p>
+                                                        <input type="password" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            placeholder="password"id="password" name="password">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="passError">Field required</p>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="row mt-4 "> <!-- Email=number-->
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            > Mobile number</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            placeholder="+91 3588899xx"id="mobile" name="phone">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="mobError">Field required</p>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                             type="email">Email address</p>
+                                                        <input type="email" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            placeholder="xyz@example.com"id="email" name="email">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="emailError">Field required</p>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="row mt-4"> <!--gender+DOB-->
+                                                    <div class="col-md-6">
+                                                        <label for="dob" class="imp"style="color:  var(--primary-color);font-weight: 500;">Date of Birth</label>
+                                                        <input type="date" class="form-control" max="2023-09-01"
+                                                            min="1945-01-01" required style="color: #949DB9;" id="birthday" name="dob">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="dobError">Field required</p>
+
+                                                      </div>
+                                                    <div class="col-md-5 px-5">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            id="gender">Gender</p>
+
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="gender" id="maleoption"
+                                                                value="Male">
+                                                            <label class="form-check-label" for="maleoption"
+                                                                style="color:  var(--primary-color);font-weight: 400;">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="gender" id="femaleoption"
+                                                                value="Female">
+                                                            <label class="form-check-label" for="femaleoption"
+                                                                style="color:  var(--primary-color);font-weight: 400; ">Female</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mt-4 "> <!-- Qualifications     -->
+                                                    <div class="col-md-12">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >Qualifications</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            placeholder="Bachelors,MBBS etc.."id="qual" name="qualification">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="qualError">Field required</p>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mt-4 "> <!-- Adress     -->
+                                                    <div class="col-md-12">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >Address</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            placeholder="xyz,12 xyz,kerala"id="address" name="address">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="addError">Field required</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4 "> <!--Country + state-->
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >Country</p>
+                                                        <select class="form-select" id="country" name="country">
+                                                            <option selected>Choose...</option>
+                                                            <option value="India" name="country">India</option>
+                                                            <option value="Srilanka" name="country">Srilanka</option>
+                                                            <option value="Bangkok" name="country">Bangkok</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >State</p>
+                                                        <select class="form-select" id="state" name="state">
+                                                            <option selected>Choose...</option>
+                                                            <option value="Kerala" name="state">Kerala</option>
+                                                            <option value="Mumbai" name="state">Mumbai</option>
+                                                            <option value="Bangkok" name="state">Bangkok</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4 "> <!--    pin/state   -->
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >City</p>
+                                                        <select class="form-select" id="city" name="city">
+                                                            <option selected>Choose...</option>
+                                                            <option value="Abc" name="city">Abc</option>
+                                                            <option value="def" name="city">Cba</option>
+                                                            <option value="hij" name="city">Zyx</option>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="fheading"
+                                                            style="color:  var(--primary-color);font-weight: 500;"
+                                                            >Pin/zip</p>
+                                                        <input type="text" class="form-control"
+                                                            aria-label="Sizing example input"
+                                                            aria-describedby="inputGroup-sizing-sm" placeholder="2xx58"id="pinzip" name="pincode">
+                                                                                                                    <p style="color: red; padding:5px; display:none;" id="pinError">Field required</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button  type="submit" class="btn btn-primary">
+                                                <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;Add employee
+                                            </button>
+
+
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- success msg -->
+
+                    <div class="form-modal" id="zero">
+                        <p>Employee uploaded succesfully!</p>
+                        <div class="delete-button">
+                            <button id="black" onclick="alertz()">ok</button>
+
+                        </div>
+                    </div>

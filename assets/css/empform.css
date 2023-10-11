@@ -1,0 +1,37 @@
+::placeholder{
+    color: lightgrey;
+}
+
+:root{
+    
+        --primary-color:#2B3674;  /*font color for each entry heading*/
+    
+}
+
+/* Override Bootstrap focus style */
+.form-control:focus {
+    box-shadow: none; /* Remove the focus box shadow */
+    border-color: #4318ff; /* Reset the border color */
+}
+
+    /* Custom CSS for filled radio buttons */
+    .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: black; /* Change this color to your desired fill color */
+        border-color: #007bff; /* Change this color to your desired fill color */
+    }
+         
+.bottombutton input{
+    color: white;
+}
+.fheading::after {
+    content: "*";
+    color: red;
+}
+@media screen and (max-width: 430px){ 
+    .bottombutton{
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+    
+}

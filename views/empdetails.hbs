@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/empdetails.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet">  
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,500;1,200&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    {{>leftPanel}}   {{!-- left side panel blue with nav bar using hbs template --}}
+
+                        <!-- Right container with rest of deets -->
+
+            <div class="col" style="background-color: #F4F7FE;">
+
+                        <!--         Header,container 2      -->
+                        
+                <div class="row" id="empviewbody">
+                    <div class="col-3 p-4 " style="display: flex;flex-direction: column; flex:1;">
+                        <p  style="color: #707EAE; font-weight: 500;padding: 0; margin: 0;font-size: 14px;">Dashboard/Employees</p>
+                        <h2 style="color:  #2B3674;padding: 0; font-weight: bold; letter-spacing: 1px; font-size: 34px;">Employee&nbsp;details</h2>
+                    </div>
+                    <!--  -->
+                </div>
+
+                        <!--           Employee list starts         -->
+
+                <div class="container p-2" style="background-color: #fff; max-width:900px; margin: 0; border-radius: 10px; max-width: 700px; margin: auto; height: 1000px; display: flex; flex-direction: column;" id="viewemp">
+                    <div class="cover" style="height: 300px;" >
+                        <img src="/img/bgimage1.jpg" style=" width: 680px; height: 200px; border-radius: 12px;position: relative;">
+                        <img name="avatar" src="{{{employee.avatar}}} "alt="" style="position: relative; border: 4px solid white; border-radius: 100%; bottom: 40px; left: 275px; height:130px; width:130px;">
+                    </div>
+                    <h3 style="color:#2B3674; text-align: center;">{{employee.firstName}}&nbsp;{{employee.lastName}}</h3>
+                    <h5 style="text-align: center; color: #707EAE; font-weight: normal;">{{employee.email}}</h5>
+
+                            <!--    Header ends,form starts     -->
+
+                    <div class="row mt-3 " style="align-items: center; justify-content: space-evenly;">
+                        <div class="col-3 " style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12);">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Gender</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.gender}}</p>
+                        </div>
+                        <div class="col-3" style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12);">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Age</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">28</p>
+                        </div>
+                        <div class="col-3 " style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Date of birth</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.dob}}</p>
+                            </div>
+
+                    </div>
+                    <div class="row mt-3" style="align-items: center; justify-content: space-evenly;">
+                        <div class="col-5"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Mobile number</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.phone}}</p>
+
+                        </div>
+                        <div class="col-5"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Qualifications</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.qualification}} </p>
+
+
+                        </div>
+
+                    </div>
+                    <div class="row mt-3" style="align-items: center; justify-content: space-evenly;">
+                        <div class="col-5 py-2"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Address</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.address}}</p>
+
+                        </div>
+                        <div class="col-5 py-3"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2"style="color:#707EAE ;font-weight: 400; margin: 0;">Username</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.username}} </p>
+                        </div>
+                    </div>
+                    <div class="row mt-3" style="align-items: center; justify-content: space-evenly;">
+                        <div class="col-5 py-2"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">Country</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.country}}</p>
+
+                        </div>
+                        <div class="col-5 py-3"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2"style="color:#707EAE ;font-weight: 400; margin: 0;">State</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.state}} </p>
+                        </div>
+                    </div>
+                    <div class="row mt-3" style="align-items: center; justify-content: space-evenly;">
+                        <div class="col-5 py-2"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2" style="color:#707EAE ;font-weight: 400; margin: 0;">City</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.city}}</p>
+
+                        </div>
+                        <div class="col-5 py-3"style="background-color: #fff;border-radius: 16px;background: var(--secondary-primary-white, #FFF);/* Shadows/Soft Shadow/Soft Shadow - Style 1 */box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12); text-align: left;">
+                            <p class="pt-2"style="color:#707EAE ;font-weight: 400; margin: 0;">Pincode</p>
+                            <p style="color: #2B3674; font-weight: 500;margin-top: 0.5rem;">{{employee.pincode}} </p>
+                        </div>
+                    </div>
+
+                            <!--         Buttons on bottom      -->
+                            
+                    
+
+                             <!--        Footer         -->
+            </div>
+
+           {{>footer}}
+           
+        </div>
+
+
+                       
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    {{!-- <script src="/js/view.js"></script>  --}}
+
+
+</body>
+</html>
