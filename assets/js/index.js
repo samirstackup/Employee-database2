@@ -1,3 +1,5 @@
+//Calling editemployee function from edit button
+
 function editEmployee(employeeId) {
   // Make an AJAX request to retrieve employee data based on the employeeId
   fetch(`/api/employees?id=${employeeId}`)
@@ -7,7 +9,7 @@ function editEmployee(employeeId) {
       console.log(data);
 
       // Now you can proceed to populate the form fields with this data
-      populateFormFields(data);
+      populateFormFields(data); //function given below
 
       // Set the form's action attribute dynamically based on the employee's ID
       console.log(employeeId);
@@ -19,7 +21,7 @@ function editEmployee(employeeId) {
     });
 }
 
-// Function to populate the form fields with the retrieved data
+// ============Function to populate the form fields with the retrieved data============//
 function populateFormFields(employeeData) {
   // Populate the form fields with the retrieved data
   document.getElementById("editedmrms").value = employeeData.salutation;
@@ -57,7 +59,6 @@ function populateFormFields(employeeData) {
     if (EditInputElement.files[0]) {
       editImageElement.src = URL.createObjectURL(EditInputElement.files[0]);
       // selectedImageElement.style.display = "block";
-  
     } else {
       editImageElement.src = employeeData.avatar; // Clear the image if no file is selected
       // selectedImageElement.style.display = "none";
@@ -65,44 +66,47 @@ function populateFormFields(employeeData) {
   });
 }
 
-
 const empeditform = document.getElementById("empeditform");
 
+//=================Function to submit the data into edit form===================//
 empeditform.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission
   const editedMrMsSelect = document.getElementById("editedmrms");
   const selectedOption =
     editedMrMsSelect.options[editedMrMsSelect.selectedIndex];
   const selectedValue = selectedOption.value;
-  
 
-  // Create a FormData object to store form data, including the avatar file
+  //==== Create a FormData object to store form data, including the avatar file ======//
   let formData = new FormData();
   // Get the selected avatar file
-   const avatarFile = document.getElementById("editavatar").files[0];
+  const avatarFile = document.getElementById("editavatar").files[0];
 
-   // Check if an avatar file is selected
-   if (avatarFile) {
-     formData.append("avatar", avatarFile); // Append the avatar file to formData
-   }
-   formData.append("salutation", selectedValue);
+  // Check if an avatar file is selected
+  if (avatarFile) {
+    formData.append("avatar", avatarFile); // Append the avatar file to formData
+  }
+  formData.append("salutation", selectedValue);
   formData.append("firstName", document.getElementById("editedFname").value);
   formData.append("lastName", document.getElementById("editedLname").value);
   formData.append("email", document.getElementById("editedemail").value);
   formData.append("phone", document.getElementById("editedmobile").value);
   formData.append("dob", document.getElementById("editedbirthday").value);
-  formData.append("gender", document.querySelector('i nput[name="editedgender"]:checked').value);
+  formData.append(
+    "gender",
+    document.querySelector('input[name="editedgender"]:checked').value
+  );
   formData.append("address", document.getElementById("editedaddress").value);
   formData.append("country", document.getElementById("editedcountry").value);
   formData.append("city", document.getElementById("editedcity").value);
   formData.append("state", document.getElementById("editedstate").value);
-  formData.append("qualifications", document.getElementById("editedqual").value);
+  formData.append(
+    "qualifications",
+    document.getElementById("editedqual").value
+  );
   formData.append("pincode", document.getElementById("editedpinzip").value);
   formData.append("username", document.getElementById("editedusername").value);
   formData.append("password", document.getElementById("editedpassword").value);
   formData.append("avatar", document.getElementById("eAvatar"));
-
-   
 
   // Fetch or use an AJAX library to send a PUT request to the form's action URL
   // Example using Fetch API:
@@ -126,8 +130,7 @@ empeditform.addEventListener("submit", function (event) {
     });
 });
 
-// =========================================================================
-// DELETE FUNCTION
+//========================== DELETE FUNCTION===============================//
 
 function deleteId(employeeId) {
   console.log(employeeId);
@@ -153,15 +156,15 @@ function deleteId(employeeId) {
     });
 }
 
-// =========================================================================
-// VALIDATION FUNCTION
+// ======================VALIDATION FUNCTION===========================//
 var empform = document.getElementById("empform");
 
 empform.addEventListener("submit", addemployee);
 var fileInputElement = document.getElementById("avatar");
 var selectedImageElement = document.getElementById("selectedImage"); // Add this line
-var errormsg=document.getElementById("inputError");
+var errormsg = document.getElementById("inputError");
 
+//==================Add employee function========================//
 function addemployee(event) {
   event.preventDefault();
 
@@ -215,39 +218,38 @@ function addemployee(event) {
     .then((res) => res.json())
     .then((data) => {
       console.log("Employee added successfully:", data);
-          // Display an alert after the employee is added successfully
-          window.alert("Employee added successfully!");
+      // Display an alert after the employee is added successfully
+      window.alert("Employee added successfully!");
       empform.reset();
-      
     })
     .catch((error) => {
       console.error("Error adding employee:", error);
     });
 }
 
+//=============Function for displaying selected image============//
 fileInputElement.addEventListener("change", function () {
   if (fileInputElement.files[0]) {
     selectedImageElement.src = URL.createObjectURL(fileInputElement.files[0]);
     selectedImageElement.style.display = "block";
-
   } else {
     selectedImageElement.src = ""; // Clear the image if no file is selected
     selectedImageElement.style.display = "none";
   }
 });
+
+//=============function to validate the add form==================//
 function validate() {
   var salut = document.getElementById("mrms").value;
   if (salut === "") {
     // alert("Please seledct a salutation");
     document.getElementById("mrms").focus();
     document.getElementById("mrms").style.border = "1px solid red";
-    document.getElementById("salError").style.display="block";
-  }
-  else{
+    document.getElementById("salError").style.display = "block";
+  } else {
     document.getElementById("mrms").focus();
     document.getElementById("mrms").style.border = "1px solid green";
-    document.getElementById("salError").style.display="none";
-
+    document.getElementById("salError").style.display = "none";
   }
   var firstName = document.getElementById("Fname").value;
   var namePattern = /^[A-Za-z]+$/;
@@ -255,20 +257,16 @@ function validate() {
     // alert("Please provide your first name!");        //validating fname isnt empty
     document.getElementById("Fname").focus();
     document.getElementById("Fname").style.border = "1px solid red";
-    document.getElementById("fNameError").style.display="block";
-
+    document.getElementById("fNameError").style.display = "block";
   } else if (!namePattern.test(firstName)) {
     // alert("First name should only contain letters.");
     document.getElementById("Fname").focus();
     document.getElementById("Fname").style.border = "1px solid red";
-    document.getElementById("fNameError").style.display="block";
-
-  }
-  else{
+    document.getElementById("fNameError").style.display = "block";
+  } else {
     document.getElementById("Fname").focus();
     document.getElementById("Fname").style.border = "1px solid green";
-    document.getElementById("fNameError").style.display="none";
-
+    document.getElementById("fNameError").style.display = "none";
   }
 
   var lastName = document.getElementById("Lname").value;
@@ -278,31 +276,26 @@ function validate() {
     // alert("Please provide your name!");             //same for last name
     document.getElementById("Lname").focus();
     document.getElementById("Lname").style.border = "1px solid red";
-    document.getElementById("lNameError").style.display="block";
-
+    document.getElementById("lNameError").style.display = "block";
   } else if (!name2Pattern.test(lastName)) {
     alert("Last name should only contain letters.");
     document.getElementById("Lname").focus();
     document.getElementById("Lname").style.border = "1px solid red";
-    document.getElementById("lNameError").style.display="none";
-
-  } else{
+    document.getElementById("lNameError").style.display = "none";
+  } else {
     document.getElementById("Lname").focus();
     document.getElementById("Lname").style.border = "1px solid green";
-    document.getElementById("lNameError").style.display="none";
-
+    document.getElementById("lNameError").style.display = "none";
   }
   var username = document.getElementById("username").value;
   if (username === "") {
     document.getElementById("username").focus();
     document.getElementById("username").style.border = "1px solid red";
-    document.getElementById("usernameError").style.display="block";
-
-  } else{
+    document.getElementById("usernameError").style.display = "block";
+  } else {
     document.getElementById("username").focus();
     document.getElementById("username").style.border = "1px solid green";
-    document.getElementById("usernameError").style.display="none";
-
+    document.getElementById("usernameError").style.display = "none";
   }
 
   var password = document.getElementById("password").value;
@@ -310,17 +303,15 @@ function validate() {
   if (password === "") {
     document.getElementById("password").focus();
     document.getElementById("password").style.border = "1px solid red";
-    document.getElementById("passError").style.display="block";
-
+    document.getElementById("passError").style.display = "block";
   } //else if (!passwordPattern.test(password)) {
   //   document.getElementById("password").focus();
   //   document.getElementById("password").style.border = "1px solid red";
   // }
-  else{
+  else {
     document.getElementById("password").focus();
     document.getElementById("password").style.border = "1px solid green";
-    document.getElementById("passError").style.display="none";
-
+    document.getElementById("passError").style.display = "none";
   }
 
   var mobile = document.getElementById("mobile").value;
@@ -329,19 +320,16 @@ function validate() {
     //field cannot be blank
     document.getElementById("mobile").focus();
     document.getElementById("mobile").style.border = "1px solid red";
-    document.getElementById("mobError").style.display="block";
-
+    document.getElementById("mobError").style.display = "block";
   } else if (!regphone.test(mobile)) {
     document.getElementById("mobile").focus();
     document.getElementById("mobile").style.border = "1px solid red";
-    document.getElementById("mobError").style.display="block";
-    document.getElementById("mobError").textContent="Only numbers";
-
-  } else{
+    document.getElementById("mobError").style.display = "block";
+    document.getElementById("mobError").textContent = "Only numbers";
+  } else {
     document.getElementById("mobile").focus();
     document.getElementById("mobile").style.border = "1px solid green";
-    document.getElementById("mobError").style.display="none";
-
+    document.getElementById("mobError").style.display = "none";
   }
 
   var email = document.getElementById("email").value;
@@ -350,33 +338,29 @@ function validate() {
     //field cannot be blank
     document.getElementById("email").focus();
     document.getElementById("email").style.border = "1px solid red";
-    document.getElementById("emailError").style.display="block";
-
+    document.getElementById("emailError").style.display = "block";
   } else if (!regemail.test(email)) {
     document.getElementById("email").focus();
     document.getElementById("email").style.border = "1px solid red";
-    document.getElementById("emailError").style.display="block";
-    document.getElementById("emailError").textContent="Email error";
-
-  } else{
+    document.getElementById("emailError").style.display = "block";
+    document.getElementById("emailError").textContent = "Email error";
+  } else {
     document.getElementById("email").focus();
     document.getElementById("email").style.border = "1px solid green";
-    document.getElementById("emailError").style.display="none";
-
+    document.getElementById("emailError").style.display = "none";
   }
 
   var DOB = document.getElementById("birthday").value;
   if (DOB === "") {
     document.getElementById("birthday").focus();
     document.getElementById("birthday").style.border = "1px solid red";
-    document.getElementById("dobError").style.display="block";
+    document.getElementById("dobError").style.display = "block";
 
     // alert("Please enter the date");
-  } else{
+  } else {
     document.getElementById("birthday").focus();
     document.getElementById("birthday").style.border = "1px solid green";
-    document.getElementById("dobError").style.display="none";
-
+    document.getElementById("dobError").style.display = "none";
   }
 
   var genderRadios = document.querySelectorAll('input[name="gender"]');
@@ -394,9 +378,8 @@ function validate() {
       var label = genderRadios[i].nextElementSibling; // Get the associated label element
       if (label && label.tagName === "LABEL") {
         label.style.border = "1px solid red";
-      } else{
+      } else {
         label.style.border = "none";
-
       }
     }
   }
@@ -405,27 +388,24 @@ function validate() {
   if (qualifications === "") {
     document.getElementById("qual").focus();
     document.getElementById("qual").style.border = "1px solid red";
-    document.getElementById("qualError").style.display="block";
+    document.getElementById("qualError").style.display = "block";
 
     // alert("Please enter the relevent field");
-  } else{
+  } else {
     document.getElementById("qual").focus();
     document.getElementById("qual").style.border = "1px solid green";
-    document.getElementById("qualError").style.display="none";
-
+    document.getElementById("qualError").style.display = "none";
   }
 
   var address = document.getElementById("address").value;
   if (address === "") {
     document.getElementById("address").focus();
     document.getElementById("address").style.border = "1px solid red";
-    document.getElementById("addError").style.display="block";
-
-  } else{
+    document.getElementById("addError").style.display = "block";
+  } else {
     document.getElementById("address").focus();
     document.getElementById("address").style.border = "1px solid green";
-    document.getElementById("addError").style.display="none";
-
+    document.getElementById("addError").style.display = "none";
   }
 
   var countrySelect = document.getElementById("country");
@@ -434,9 +414,8 @@ function validate() {
   if (selectedOption === "Choose...") {
     document.getElementById("country").focus();
     countrySelect.style.border = "1px solid red";
-  } else{
+  } else {
     countrySelect.style.border = "none";
-
   }
 
   var state = document.getElementById("state");
@@ -446,9 +425,8 @@ function validate() {
     document.getElementById("state").focus();
     document.getElementById("state").style.border = "1px solid red";
     // alert("Please enter your state");
-  } else{
+  } else {
     document.getElementById("state").style.border = "none";
-
   }
 
   var city = document.getElementById("city");
@@ -458,28 +436,24 @@ function validate() {
     document.getElementById("city").focus();
     document.getElementById("city").style.border = "1px solid red";
     // alert("Please enter your city");
-  } else{
+  } else {
     document.getElementById("city").style.border = "none";
-
   }
 
   var pinzip = document.getElementById("pinzip").value;
   if (pinzip === "") {
     document.getElementById("pinzip").focus();
     document.getElementById("pinzip").style.border = "1px solid red";
-    document.getElementById("pinError").style.display="block";
-
-  } else{
+    document.getElementById("pinError").style.display = "block";
+  } else {
     document.getElementById("pinzip").focus();
     document.getElementById("pinzip").style.border = "1px solid green";
-    document.getElementById("pinError").style.display="none";
-
+    document.getElementById("pinError").style.display = "none";
   }
 
   return true;
 }
-// ============================================================================
-// SEARCH FUNCTION
+//========================== SEARCH FUNCTION========================//
 
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
@@ -511,9 +485,8 @@ searchInput.addEventListener("input", function () {
     }
   }
 });
-// ======================================================================
 
-// PAGINATION
+// =========================PAGINATION===================================//
 
 const tr = document.getElementById("tableBody").getElementsByTagName("tr");
 var empnumber = tr.length;
@@ -560,6 +533,8 @@ for (i = 0; i < pgbutton.length; i++) {
 }
 pgbutton[count - 1].classList.add("pgbuttoncss");
 
+//=======functions for pagination buttons=============//
+
 function buttonClick() {
   // console.log(this.innerHTML);
   pgbutton[count - 1].classList.remove("pgbuttoncss");
@@ -605,7 +580,8 @@ function next() {
   main(count);
 }
 
-// ======================================================================
+// =================API for all country select option==========//
+
 const selectCountry = document.getElementById("country");
 
 fetch("https://restcountries.com/v3.1/all")
