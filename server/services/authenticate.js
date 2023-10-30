@@ -2,31 +2,6 @@ const jwt = require("jsonwebtoken");
 const session = require("express-session");
 const mongosession = require("connect-mongodb-session")(session);
 
-// const authenticate = (req, res, next) => {
-//   try {
-
-//     const token = req.headers.authorization.split(" ")[1];
-//     const decode = jwt.verify(token, "secretValue"); //Can be anything or symbols but keep secret to ensure app security, must match in authcontrol.
-
-//     req.user = decode;
-//     console.log("1" + token);
-//     console.log("Auth triggered try function");
-
-//     next();
-//   }
-//    catch (error) {
-//     console.error(error); // Log the error for debugging
-
-//     if (error.email === "Tokenexpired") {
-//       res.status(401).json({
-//         message: "token expired,pleaase log in again",
-//       });
-//     } else {
-//       res.redirect("/login");
-//       console.log("Auth triggered catch redirect");
-//     }
-//   }
-// };
 const isAuth = (req, res, next) => {
   if (req.session && req.session.email) {
     console.log(session);
